@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width: 30rem;
+  min-width: 287px;
 }
 
 .toast-form h2 {
@@ -16,9 +16,12 @@
 }
 
 .radio-btns {
+  max-width: 30rem;
+  margin: auto 1rem;
+  width: 100%;
   display: flex;
   border: solid black 0.1rem;
-  width: 25rem;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-self: center;
 }
