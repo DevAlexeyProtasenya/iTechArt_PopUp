@@ -18,9 +18,16 @@ Modal.prototype.createModal = function(){
   const modal = document.createElement('div');
   modal.classList.add('modal');
   if(this.content){
-    modal.appendChild(this.content);
+    modal.appendChild(this.makeContentWrapper());
   }
   return modal;
+}
+
+Modal.prototype.makeContentWrapper = function(){
+  var wrapper = document.createElement('div');
+  this.addClassesToElement(wrapper, ['content-wrapper']);
+  wrapper.appendChild(this.content);
+  return wrapper
 }
 
 Modal.prototype.closeModalByWrapper = function(event){

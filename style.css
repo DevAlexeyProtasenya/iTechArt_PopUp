@@ -5,12 +5,14 @@
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #FFAE73;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 7rem;
 }
 
 header, footer {
+  z-index: 1;
   position: fixed;
   top: 0;
   width: 100vw;

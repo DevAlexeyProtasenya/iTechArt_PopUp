@@ -1,4 +1,5 @@
 .toast {
+  z-index: 10;
   position: relative;
   top: 0;
   right: 0;
@@ -7,7 +8,7 @@
   border-radius: 1rem;
   align-items: center;
   animation: 1s;
-  animation: appearToast 1s ease-in-out forwards;
+  animation: appearToast .5s ease-in-out forwards;
 }
 
 .toast__disappearance {
@@ -61,10 +62,10 @@
 
 @keyframes appearToast {
   from {
-    right: -20rem;
+    opacity: 0;
   }
   to {
-    right: 0;
+    opacity: 100;
   }
 }
 
