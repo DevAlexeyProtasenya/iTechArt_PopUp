@@ -15,5 +15,27 @@
   min-height: 1rem;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  animation: modalEmergence ease-in 0.5s forwards;
+}
+
+.closing {
+  animation: modalDisappearance ease-in 0.3s forwards;
+}
+
+@keyframes modalEmergence {
+  from{
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to{
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes modalDisappearance {
+  from{
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to{
+    transform: translate(-50%, -50%) scale(0);
+  }
 }

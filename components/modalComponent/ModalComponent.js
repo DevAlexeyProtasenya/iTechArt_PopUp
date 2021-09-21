@@ -25,6 +25,8 @@ Modal.prototype.createModal = function(){
 
 Modal.prototype.closeModal = function(event){
   if(event.target.classList.contains('modal-wrapper')){
-    this.hide();
+    this.addClassesToElement(this.modal, ['closing']);
+    this.element.removeEventListener('click', this.closeModal);
+    setTimeout(this.hide.bind(this), 300);
   }
 }

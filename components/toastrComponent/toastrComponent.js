@@ -10,6 +10,14 @@ function Toastr (text, title, type, timeout) {
 Toastr.prototype = Object.create(Popup.prototype);
 Toastr.prototype.constructor = Toastr;
 
+Toastr.prototype.createElement = function(){
+  this.addClassesToElement(this.element, ['toast', this.type]);
+  this.addIcon();
+  this.createInformationBlock();
+  var timeout = this.setCloseTimer(this.timeout*1000);
+  this.addCloseButton(this.closeHandler.bind(this, timeout));
+}
+
 Toastr.prototype.addIcon = function(){
   var icon = document.createElement('img');
   icon.src = this.getIconSrc();
@@ -46,14 +54,6 @@ Toastr.prototype.setCloseTimer = function(time){
     setTimeout(this.hide.bind(this), 500);
   }.bind(this), time);
   return timeout
-}
-
-Toastr.prototype.createElement = function(){
-  this.addClassesToElement(this.element, ['toast', this.type]);
-  this.addIcon();
-  this.createInformationBlock();
-  var timeout = this.setCloseTimer(this.timeout*1000);
-  this.addCloseButton(this.closeHandler.bind(this, timeout));
 }
 
 Toastr.prototype.closeHandler = function(timeout){
