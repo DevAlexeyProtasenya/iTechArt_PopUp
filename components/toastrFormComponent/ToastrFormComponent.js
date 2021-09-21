@@ -102,7 +102,7 @@ ToastForm.prototype.completeForm = function(){
 }
 
 ToastForm.prototype.cancelForm = function(){
-  this.hide();
+  this.closeModal();
 }
 
 ToastForm.prototype.validateFields = function(title, text, timeout){
@@ -110,7 +110,6 @@ ToastForm.prototype.validateFields = function(title, text, timeout){
     this.form.removeChild(this.label);
   }
   if(title.length === 0){
-    console.log(this.label);
     this.label.textContent = 'Title must be filed!';
     this.form.appendChild(this.label);
     return false;

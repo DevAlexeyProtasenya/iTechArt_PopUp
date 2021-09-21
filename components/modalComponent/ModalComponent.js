@@ -10,7 +10,7 @@ Modal.prototype.constructor = Modal;
 
 Modal.prototype.createElement = function(){
   this.addClassesToElement(this.element, ['modal-wrapper']);
-  this.addListener(this.element, 'click', this.closeModal);
+  this.addListener(this.element, 'click', this.closeModalByWrapper);
   this.addElement(this.modal);
 }
 
@@ -23,10 +23,14 @@ Modal.prototype.createModal = function(){
   return modal;
 }
 
-Modal.prototype.closeModal = function(event){
+Modal.prototype.closeModalByWrapper = function(event){
   if(event.target.classList.contains('modal-wrapper')){
-    this.addClassesToElement(this.modal, ['closing']);
-    this.element.removeEventListener('click', this.closeModal);
-    setTimeout(this.hide.bind(this), 300);
+    this.closeModal();
   }
+}
+
+Modal.prototype.closeModal = function(){
+  this.addClassesToElement(this.modal, ['closing']);
+  this.element.removeEventListener('click', this.closeModal);
+  setTimeout(this.hide.bind(this), 300);
 }
