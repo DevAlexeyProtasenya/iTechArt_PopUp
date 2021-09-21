@@ -1,0 +1,78 @@
+.toast {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 20rem;
+  display: flex;
+  border-radius: 1rem;
+  align-items: center;
+  animation: 1s;
+  animation: appearToast 1s ease-in-out forwards;
+}
+
+.toast__disappearance {
+  animation: disapearToast .5s ease-in forwards;
+}
+
+.success {
+  background-color: rgb(4, 189, 4);
+}
+
+.warning {
+  background-color: yellow;
+}
+
+.error {
+  background-color: red;
+}
+
+.info {
+  background-color: rgb(36, 193, 255);
+}
+
+.toast__icon {
+  margin-left: 0.5rem;
+  width: 3rem;
+}
+
+.information {
+  margin-left: 1rem;
+}
+
+.close-btn {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+  border-radius: 100%;
+  border: solid 0.1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-btn img {
+  cursor: pointer;
+  width: 100%;
+}
+
+@keyframes appearToast {
+  from {
+    right: -20rem;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes disapearToast {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
