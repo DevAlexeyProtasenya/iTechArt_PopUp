@@ -1,4 +1,4 @@
-var FormModule = (function(){
+var formModule = (function(){
   function Form(content) {
     this.fields = content.fields;
     this.handler = content.handler;

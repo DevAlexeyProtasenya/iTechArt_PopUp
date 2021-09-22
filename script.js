@@ -51,7 +51,7 @@
   toastButtonsField.addEventListener('click', renderToast);
 
   function viewForm(){
-    var modal = new toastFormModule(toastFormFields);
+    var modal = new formModule(toastFormFields);
     modal.render(document.body);
   }
 
