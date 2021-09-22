@@ -1,5 +1,5 @@
-var toastFormModule = (function(){
-  function ToastForm(content) {
+var FormModule = (function(){
+  function Form(content) {
     this.fields = content.fields;
     this.handler = content.handler;
     this.required = [];
@@ -9,23 +9,23 @@ var toastFormModule = (function(){
     modalModule.call(this, this.form);
   }
 
-  ToastForm.prototype = Object.create(modalModule.prototype);
-  ToastForm.prototype.constructor = ToastForm;
+  Form.prototype = Object.create(modalModule.prototype);
+  Form.prototype.constructor = Form;
 
-  ToastForm.prototype.createForm = function(){
+  Form.prototype.createForm = function(){
     var form = document.createElement('form');
     this.addClassesToElement(form, ['toast-form']);
     return form;
   };
 
-  ToastForm.prototype.setContent = function(){
+  Form.prototype.setContent = function(){
     for(var i = 0; i < this.fields.length; i++){
       this.createElement(this.fields[i]);
     }
     this.createButtons();
   }
 
-  ToastForm.prototype.createElement = function(field){
+  Form.prototype.createElement = function(field){
     switch(field.type){
       case 'header': {
         this.createHeader(field);
@@ -46,13 +46,13 @@ var toastFormModule = (function(){
     }
   }
 
-  ToastForm.prototype.createHeader = function(field){
+  Form.prototype.createHeader = function(field){
     var header = document.createElement('h2');
     header.textContent = field.text;
     this.form.appendChild(header);
   }
 
-  ToastForm.prototype.createButtons = function(){
+  Form.prototype.createButtons = function(){
     var buttons = document.createElement('div');
     this.addClassesToElement(buttons, ['toast-form__buttons']);
     this.addButton('button', 'click', this.completeForm.bind(this), 'Complete', ['complete-btn'], buttons);
@@ -60,7 +60,7 @@ var toastFormModule = (function(){
     this.form.appendChild(buttons);
   }
 
-  ToastForm.prototype.createInput = function(field){
+  Form.prototype.createInput = function(field){
     var textField = document.createElement('input');
     var label = document.createElement('label');
     label.htmlFor = field.id;
@@ -82,7 +82,7 @@ var toastFormModule = (function(){
     return rootDiv;
   }
 
-  ToastForm.prototype.createRadioInput = function(field){
+  Form.prototype.createRadioInput = function(field){
     var rootDiv = this.createInput(field);
     var radio = rootDiv.querySelector('input');
     radio.value = field.value;
@@ -90,18 +90,18 @@ var toastFormModule = (function(){
     this.form.appendChild(rootDiv);
   }
 
-  ToastForm.prototype.completeForm = function(){
+  Form.prototype.completeForm = function(){
     if(this.validateFields()){
       this.handler.call(this, this.form);
       this.cancelForm();
     }
   }
 
-  ToastForm.prototype.cancelForm = function(){
+  Form.prototype.cancelForm = function(){
     this.closeModal();
   }
 
-  ToastForm.prototype.validateFields = function(){
+  Form.prototype.validateFields = function(){
     for(var i = 0; i < this.required.length; i++) {
       if(this.required[i].value.length === 0){
         this.label.textContent = 'Required fields should be filled!';
@@ -113,11 +113,11 @@ var toastFormModule = (function(){
     return true;
   }
 
-  ToastForm.prototype.createErrorLabel = function(){
+  Form.prototype.createErrorLabel = function(){
     var label = document.createElement('label');
     this.addClassesToElement(label, ['error-text']);
     return label;
   }
 
-  return ToastForm;
+  return Form;
 })();
