@@ -50,6 +50,10 @@ class Popup {
     }
     this.addButton(closeButtonSettings, this.element);
   }
+
+  addElement(element){
+    this.element.appendChild(element);
+  }
 }
 
 export default Popup;
