@@ -1,4 +1,4 @@
-export class Popup {
+class Popup {
   constructor(tag, parentSelector){
     this.element = this.getElement(tag);
     this.parent = this.getParent(parentSelector);
@@ -51,3 +51,5 @@ export class Popup {
     this.addButton(closeButtonSettings, this.element);
   }
 }
+
+export default Popup;
