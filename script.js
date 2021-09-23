@@ -17,28 +17,28 @@
     var toast;
     switch(toastType){
       case 'success': {
-        toast = new toastModule(
+        toast = new Toastr(
           'Everything is fine!',
           'Success!!!',
           ToastrType.SUCCESS);
         break;
       }
       case 'error': {
-        toast = new toastModule(
+        toast = new Toastr(
           'Oops, something is wrong!',
           'Error!!!',
           ToastrType.ERROR);
         break;
       }
       case 'warning': {
-        toast = new toastModule(
+        toast = new Toastr(
           'There are some warnings!',
           'Warning!!!',
           ToastrType.WARNING);
         break;
       }
       case 'info': {
-        toast = new toastModule(
+        toast = new Toastr(
           'Some usefull information!',
           'Info!!!',
           ToastrType.INFO);
@@ -51,7 +51,7 @@
   toastButtonsField.addEventListener('click', renderToast);
 
   function viewForm(){
-    var modal = new formModule(toastFormFields);
+    var modal = new Form(toastFormFields);
     modal.render(document.body);
   }
 

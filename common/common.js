@@ -24,7 +24,7 @@ var toastFormFields = {
         typeToast = types[i].value;
       }
     }
-    var toast = new toastModule(text, title, typeToast, timeout);
+    var toast = new Toastr(text, title, typeToast, timeout);
     var toastField = document.querySelector('.toasts');
     toast.render(toastField);
   },

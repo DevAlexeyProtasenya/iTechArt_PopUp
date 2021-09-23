@@ -1,31 +1,31 @@
-var formModule = (function(){
-  function Form(content) {
+var Form = (function(){
+  function FormComponent(content) {
     this.fields = content.fields;
     this.handler = content.handler;
     this.required = [];
     this.label = this.createErrorLabel();
     this.form = this.createForm();
     this.setContent();
-    modalModule.call(this, this.form);
+    Modal.call(this, this.form);
   }
 
-  Form.prototype = Object.create(modalModule.prototype);
-  Form.prototype.constructor = Form;
+  FormComponent.prototype = Object.create(Modal.prototype);
+  FormComponent.prototype.constructor = FormComponent;
 
-  Form.prototype.createForm = function(){
+  FormComponent.prototype.createForm = function(){
     var form = document.createElement('form');
     this.addClassesToElement(form, ['toast-form']);
     return form;
   };
 
-  Form.prototype.setContent = function(){
+  FormComponent.prototype.setContent = function(){
     for(var i = 0; i < this.fields.length; i++){
       this.createElement(this.fields[i]);
     }
     this.createButtons();
   }
 
-  Form.prototype.createElement = function(field){
+  FormComponent.prototype.createElement = function(field){
     switch(field.type){
       case 'header': {
         this.createHeader(field);
@@ -46,13 +46,13 @@ var formModule = (function(){
     }
   }
 
-  Form.prototype.createHeader = function(field){
+  FormComponent.prototype.createHeader = function(field){
     var header = document.createElement('h2');
     header.textContent = field.text;
     this.form.appendChild(header);
   }
 
-  Form.prototype.createButtons = function(){
+  FormComponent.prototype.createButtons = function(){
     var buttons = document.createElement('div');
     this.addClassesToElement(buttons, ['toast-form__buttons']);
     this.addButton('button', 'click', this.completeForm.bind(this), 'Complete', ['complete-btn'], buttons);
@@ -60,7 +60,7 @@ var formModule = (function(){
     this.form.appendChild(buttons);
   }
 
-  Form.prototype.createInput = function(field){
+  FormComponent.prototype.createInput = function(field){
     var textField = document.createElement('input');
     var label = document.createElement('label');
     label.htmlFor = field.id;
@@ -82,7 +82,7 @@ var formModule = (function(){
     return rootDiv;
   }
 
-  Form.prototype.createRadioInput = function(field){
+  FormComponent.prototype.createRadioInput = function(field){
     var rootDiv = this.createInput(field);
     var radio = rootDiv.querySelector('input');
     radio.value = field.value;
@@ -90,18 +90,18 @@ var formModule = (function(){
     this.form.appendChild(rootDiv);
   }
 
-  Form.prototype.completeForm = function(){
+  FormComponent.prototype.completeForm = function(){
     if(this.validateFields()){
       this.handler.call(this, this.form);
       this.cancelForm();
     }
   }
 
-  Form.prototype.cancelForm = function(){
+  FormComponent.prototype.cancelForm = function(){
     this.closeModal();
   }
 
-  Form.prototype.validateFields = function(){
+  FormComponent.prototype.validateFields = function(){
     for(var i = 0; i < this.required.length; i++) {
       if(this.required[i].value.length === 0){
         this.label.textContent = 'Required fields should be filled!';
@@ -113,11 +113,11 @@ var formModule = (function(){
     return true;
   }
 
-  Form.prototype.createErrorLabel = function(){
+  FormComponent.prototype.createErrorLabel = function(){
     var label = document.createElement('label');
     this.addClassesToElement(label, ['error-text']);
     return label;
   }
 
-  return Form;
+  return FormComponent;
 })();

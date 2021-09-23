@@ -1,6 +1,6 @@
-var toastModule = (function(){
-  function Toastr (text, title, type, timeout) {
-    popupModule.call(this, 'div', '#toasts');
+var Toastr = (function(){
+  function ToastrComponent (text, title, type, timeout) {
+    Popup.call(this, 'div', '#toasts');
     this.text = text;
     this.title = title;
     this.type = type;
@@ -8,10 +8,10 @@ var toastModule = (function(){
     this.closeIMG = './public/close.svg';
     this.createElement();
   }
-  Toastr.prototype = Object.create(popupModule.prototype);
-  Toastr.prototype.constructor = Toastr;
+  ToastrComponent.prototype = Object.create(Popup.prototype);
+  ToastrComponent.prototype.constructor = ToastrComponent;
 
-  Toastr.prototype.createElement = function(){
+  ToastrComponent.prototype.createElement = function(){
     this.addClassesToElement(this.element, ['toast', this.type]);
     this.addIcon();
     this.createInformationBlock();
@@ -19,7 +19,7 @@ var toastModule = (function(){
     this.addCloseButton(this.closeHandler.bind(this, timeout));
   }
 
-  Toastr.prototype.addIcon = function(){
+  ToastrComponent.prototype.addIcon = function(){
     var icon = document.createElement('img');
     icon.src = this.getIconSrc();
     icon.alt = this.title;
@@ -27,7 +27,7 @@ var toastModule = (function(){
     this.addElement(icon);
   }
 
-  Toastr.prototype.getIconSrc = function(){
+  ToastrComponent.prototype.getIconSrc = function(){
     switch(this.type) {
       case ToastrType.SUCCESS: return ToastrImages.SUCCESS;
       case ToastrType.WARNING: return ToastrImages.WARNING;
@@ -36,7 +36,7 @@ var toastModule = (function(){
     }
   }
 
-  Toastr.prototype.createInformationBlock = function(){
+  ToastrComponent.prototype.createInformationBlock = function(){
     var infBlock = document.createElement('div');
     infBlock.classList.add('information');
     var header = document.createElement('h5');
@@ -49,7 +49,7 @@ var toastModule = (function(){
   }
 
 
-  Toastr.prototype.setCloseTimer = function(time){
+  ToastrComponent.prototype.setCloseTimer = function(time){
     var timeout = setTimeout(function(){
       this.addClassesToElement(this.element, ['toast__disappearance']);
       setTimeout(this.hide.bind(this), 500);
@@ -57,10 +57,10 @@ var toastModule = (function(){
     return timeout
   }
 
-  Toastr.prototype.closeHandler = function(timeout){
+  ToastrComponent.prototype.closeHandler = function(timeout){
     clearTimeout(timeout);
     this.hide();
   };
 
-  return Toastr;
+  return ToastrComponent;
 })();
