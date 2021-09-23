@@ -1,15 +1,9 @@
+import Util from "../../common/Util.js";
+
 class Popup {
   constructor(tag, parentSelector){
-    this.element = this.getElement(tag);
-    this.parent = this.getParent(parentSelector);
-  }
-
-  getParent(parentSelector){
-    return document.querySelector(parentSelector);
-  }
-
-  getElement(tag){
-    return document.createElement(tag);
+    this.element = Util.getElement(tag);
+    this.parent = Util.getParent(parentSelector);
   }
 
   render(){
@@ -23,7 +17,7 @@ class Popup {
   addButton(buttonSettings, parent){
     const {type, action, handler, content, classes} = buttonSettings;
     const button = document.createElement('button');
-    this.addClassesToElement(button, classes);
+    Util.addClassesToElement(button, classes);
     button.type = type;
     this.addListener(button, action, handler);
     button.textContent = content;
@@ -31,13 +25,7 @@ class Popup {
   }
 
   addListener(elem, action, handler){
-    elem.addEventListener(action, handler.bind(this));
-  }
-
-  addClassesToElement(elem, classes){
-    for(let i = 0; i < classes.length; i++){
-      elem.classList.add(classes[i]);
-    }
+    elem.addEventListener(action, handler);
   }
 
   addCloseButton(handler){

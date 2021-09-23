@@ -1,3 +1,4 @@
+import Util from "../../common/Util.js";
 import Popup from "../popup/Popup.js";
 
 class Modal extends Popup {
@@ -10,7 +11,7 @@ class Modal extends Popup {
 
   createModal(){
     const modal = document.createElement('div');
-    this.addClassesToElement(modal, ['modal']);
+    Util.addClassesToElement(modal, ['modal']);
     if(this.content){
       modal.appendChild(this.makeContentWrapper());
     }
@@ -18,14 +19,14 @@ class Modal extends Popup {
   }
 
   createParentElement(){
-    this.addClassesToElement(this.element, ['modal-wrapper']);
+    Util.addClassesToElement(this.element, ['modal-wrapper']);
     this.addListener(this.element, 'click', this.closeModalByWrapper);
     this.addElement(this.modal);
   }
 
   makeContentWrapper(){
     const wrapper = document.createElement('div');
-    this.addClassesToElement(wrapper, ['content-wrapper']);
+    Util.addClassesToElement(wrapper, ['content-wrapper']);
     wrapper.appendChild(this.content);
     return wrapper;
   }
@@ -37,7 +38,7 @@ class Modal extends Popup {
   }
 
   closeModal(){
-    this.addClassesToElement(this.modal, ['closing']);
+    Util.addClassesToElement(this.modal, ['closing']);
     this.element.removeEventListener('click', this.closeModal);
     setTimeout(this.hide.bind(this), 300);
   }

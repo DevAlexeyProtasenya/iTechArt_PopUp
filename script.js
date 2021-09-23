@@ -1,6 +1,6 @@
 import Toastr from "./components/toastr/Toastr.js";
-import { ToastrType } from "./common/common.js";
-import Modal from "./components/modal/Modal.js";
+import { ToastrType, toastFormFields } from "./common/common.js";
+import Form from "./components/form/Form.js";
 const toastButtonsField = document.querySelector('.toast__buttons');
 const formButton = document.getElementById('new');
 
@@ -56,8 +56,7 @@ const createToastr = toastType => {
 toastButtonsField.addEventListener('click', renderToast);
 
 const viewForm = () => {
-  var modal = new Modal();
-  console.log(modal.modal);
+  var modal = new Form(toastFormFields);
   modal.render();
 }
 

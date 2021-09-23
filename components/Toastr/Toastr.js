@@ -1,10 +1,11 @@
 import Popup from '../popup/Popup.js';
 import {ToastrType, ToastrImages} from '../../common/common.js';
+import Util from '../../common/Util.js';
 
 class Toastr extends Popup {
   constructor(toastrSettings){
     super('div', '#toasts');
-    const {text, title, type, timeout} = toastrSettings
+    const {text, title, type, timeout} = toastrSettings;
     this.text = text;
     this.title = title;
     this.type = type;
@@ -14,11 +15,11 @@ class Toastr extends Popup {
   }
 
   createElement(){
-    this.addClassesToElement(this.element, ['toast', this.type]);
+    Util.addClassesToElement(this.element, ['toast', this.type]);
     this.addIcon();
     this.createInformationBlock();
     const timeout = this.setCloseTimer(this.timeout*1000);
-    this.addCloseButton(this.closeHandler.bind(this, timeout));
+    this.addCloseButton(() => {this.closeHandler(timeout)});
   }
 
   addIcon(){
@@ -51,10 +52,10 @@ class Toastr extends Popup {
   }
 
   setCloseTimer(time){
-    const timeout = setTimeout(function(){
-      this.addClassesToElement(this.element, ['toast__disappearance']);
-      setTimeout(this.hide.bind(this), 500);
-    }.bind(this), time);
+    const timeout = setTimeout(() => {
+      Util.addClassesToElement(this.element, ['toast__disappearance']);
+      setTimeout(() => {this.hide()}, 500);
+    }, time);
     return timeout;
   }
 
