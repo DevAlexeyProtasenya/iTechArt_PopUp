@@ -1,4 +1,4 @@
-import Popup from '../Popup/Popup.js';
+import Popup from '../popup/Popup.js';
 import {ToastrType, ToastrImages} from '../../common/common.js';
 
 class Toastr extends Popup {
@@ -10,6 +10,7 @@ class Toastr extends Popup {
     this.type = type;
     this.timeout = timeout || 5;
     this.closeIMG = './public/close.svg';
+    this.createElement();
   }
 
   createElement(){
