@@ -20,7 +20,7 @@ class Modal extends Popup {
 
   createParentElement(){
     Util.addClassesToElement(this.element, ['modal-wrapper']);
-    this.addListener(this.element, 'click', this.closeModalByWrapper);
+    this.addListener(this.element, 'click', (event) => {this.closeModalByWrapper(event)});
     this.addElement(this.modal);
   }
 
