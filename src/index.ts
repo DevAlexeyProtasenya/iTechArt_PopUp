@@ -2,7 +2,7 @@ import { ToastrType } from './common/common';
 import toastFormFields from './common/toastForm';
 import Form from './components/form/Form';
 import Toastr from './components/toastr/Toastr';
-import './style.css';
+import './style.scss';
 
 const toastButtonsField = document.querySelector('.toast__buttons');
 const formButton = document.getElementById('new');

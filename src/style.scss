@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #ffae73;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 7rem;
+
+  header,
+  footer {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: #ff6c00;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #ffe9da;
+  }
+
+  footer {
+    background-color: #a64600;
+    bottom: 0;
+    top: auto;
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .github {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .github__git-image {
+          width: 2rem;
+        }
+
+        .githun__link {
+          text-decoration: none;
+          color: #fce9dc;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .itechart__image {
+        width: 10rem;
+      }
+    }
+  }
+
+  .content {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .app {
+    margin-top: 3rem;
+    position: relative;
+
+    .toast__button {
+      width: 11.5rem;
+      height: 2rem;
+      border-radius: 0.6rem;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .custom-toastr {
+      margin-top: 12.3rem;
+      background-color: rgb(0, 0, 0);
+    }
+
+    .toast-control {
+      margin-top: 5rem;
+
+      .toast__buttons {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .success-toast {
+          background-color: green;
+          &:hover {
+            background-color: rgb(2, 94, 2);
+          }
+        }
+
+        .error-toast {
+          background-color: rgb(194, 0, 0);
+          &:hover {
+            background-color: rgb(148, 3, 3);
+          }
+        }
+
+        .warning-toast {
+          background-color: rgb(236, 206, 37);
+          &:hover {
+            background-color: rgb(179, 153, 6);
+          }
+        }
+
+        .info-toast {
+          background-color: rgb(1, 1, 189);
+          &:hover {
+            background-color: rgb(2, 2, 138);
+          }
+        }
+      }
+    }
+
+    #toasts {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}

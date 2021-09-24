@@ -1,7 +1,7 @@
 import { FieldType, FormSettingsType } from '../../common/common';
 import Util from '../../common/Util';
 import Modal from '../modal/Modal';
-import './form.css';
+import './form.scss';
 
 class Form extends Modal {
   private fields: FieldType[];

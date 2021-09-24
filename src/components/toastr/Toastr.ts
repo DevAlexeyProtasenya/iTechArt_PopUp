@@ -5,8 +5,7 @@ import {
 } from '../../common/common';
 import Util from '../../common/Util';
 import Popup from '../popup/Popup';
-
-import './toastr.css';
+import './toastr.scss';
 
 class Toastr extends Popup {
   private text: string;
