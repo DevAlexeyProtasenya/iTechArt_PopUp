@@ -1,38 +1,38 @@
-import Toastr from "../components/toastr/Toastr.js";
+import Toastr from '../components/toastr/Toastr';
+import { FormSettingsType, ToastrType } from './common';
 
-export const ToastrType = {
-  ERROR: 'error',
-  WARNING: 'warning',
-  SUCCESS: 'success',
-  INFO: 'info',
-}
-
-export const ToastrImages = {
-  ERROR: './public/toastIcons/error.svg',
-  WARNING: './public/toastIcons/warning.svg',
-  SUCCESS: './public/toastIcons/success.svg',
-  INFO: './public/toastIcons/info.svg',
-}
-
-export const toastFormFields = {
-  handler: (form) => {
-    const title = form.querySelector('#title-textfield').value;
-    const text = form.querySelector('#text-textfield').value;
-    const timeout = form.querySelector('#timeout-textfield').value; 
-    const types = document.getElementsByName('typeToast');
-    let typeToast;
+const toastFormFields: FormSettingsType = {
+  handler: (form: HTMLFormElement) => {
+    const title = form.querySelector(
+      '#title-textfield',
+    ) as HTMLInputElement | null;
+    const text = form.querySelector(
+      '#text-textfield',
+    ) as HTMLInputElement | null;
+    const timeout = form.querySelector(
+      '#timeout-textfield',
+    ) as HTMLInputElement | null;
+    const types = document.getElementsByName(
+      'typeToast',
+    ) as NodeListOf<HTMLInputElement>;
+    let typeToast = '';
     types.forEach(type => {
-      if(type.checked)
-        typeToast = type.value;
+      if (type.checked) typeToast = type.value;
     });
-    const toast = new Toastr({text, title, type: typeToast, timeout});
-    const toastField = document.querySelector('.toasts');
-    toast.render(toastField);
+    if (title && text && timeout) {
+      const toast = new Toastr({
+        text: text.value,
+        title: title.value,
+        type: typeToast as ToastrType,
+        timeout: parseInt(timeout.value, 10),
+      });
+      toast.render();
+    }
   },
   fields: [
     {
       type: 'header',
-      text: 'Toast form'
+      text: 'Toast form',
     },
     {
       type: 'text',
@@ -86,6 +86,8 @@ export const toastFormFields = {
       text: 'Info',
       value: ToastrType.INFO,
       checked: false,
-    }
-  ]
+    },
+  ],
 };
+
+export default toastFormFields;
