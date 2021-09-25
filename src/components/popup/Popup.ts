@@ -34,20 +34,6 @@ class Popup {
     this.parent.removeChild(this.element);
   }
 
-  // public addButton(buttonSettings: buttonSettingsType, parent: HTMLElement): void {
-  //   const { type, action, handler, content, classes } = buttonSettings;
-  //   const button = document.createElement('button');
-  //   Util.addClassesToElement(button, classes);
-  //   button.type = type;
-  //   Util.addListener(button, action, handler);
-  //   button.textContent = content;
-  //   parent.appendChild(button);
-  // }
-
-  // public addListener(elem, action, handler): void {
-  //   elem.addEventListener(action, handler);
-  // }
-
   public addCloseButton(handler: (event: Event) => void): void {
     const closeButtonSettings = {
       type: 'button',
