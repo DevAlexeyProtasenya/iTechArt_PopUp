@@ -19,12 +19,30 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[local]--[hash:base64:5]',
+              },
+            },
+          },
+          'resolve-url-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts'],
+    alias: {
+      common: path.resolve(__dirname, 'src/common/'),
+      components: path.resolve(__dirname, 'src/components/'),
+      src: path.resolve(__dirname, 'src/'),
+    },
+    extensions: ['.js', '.ts', '.scss'],
   },
   plugins: [
     new HtmlWebpackPlugin({

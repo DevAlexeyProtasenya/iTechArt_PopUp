@@ -1,11 +1,7 @@
-import {
-  ToastrImages,
-  ToastrSettingsType,
-  ToastrType,
-} from '../../common/common';
-import Util from '../../common/Util';
-import Popup from '../popup/Popup';
-import './toastr.scss';
+import { ToastrImages, ToastrSettingsType, ToastrType } from 'common/common';
+import Util from 'common/Util';
+import Popup from 'components/popup/Popup';
+import 'components/toastr/toastr.scss';
 
 class Toastr extends Popup {
   private text: string;

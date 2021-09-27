@@ -1,4 +1,4 @@
-import { ButtonSettingsType } from './common';
+import { ButtonSettingsType } from 'common/common';
 
 abstract class Util {
   static addClassesToElement(elem: HTMLElement, classes: string[]): void {

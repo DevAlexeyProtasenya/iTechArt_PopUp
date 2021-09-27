@@ -1,8 +1,8 @@
-import { ToastrType } from './common/common';
-import toastFormFields from './common/toastForm';
-import Form from './components/form/Form';
-import Toastr from './components/toastr/Toastr';
-import './style.scss';
+import Form from 'components/form/Form';
+import { ToastrType } from 'common/common';
+import toastFormFields from 'common/toastForm';
+import Toastr from 'components/toastr/Toastr';
+import 'src/style';
 
 const toastButtonsField = document.querySelector('.toast__buttons');
 const formButton = document.getElementById('new');

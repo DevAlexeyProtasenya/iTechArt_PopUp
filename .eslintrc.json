@@ -22,6 +22,7 @@
     "rules": {
       "prettier/prettier": ["error"],
       "no-shadow": "off",
+      "import/no-unresolved": "off",
       "@typescript-eslint/no-shadow": "error",
       "import/extensions": [
         "error",
@@ -32,11 +33,5 @@
         }
      ]
     },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [".js", ".ts"]
-        }
-      }
-    }
+    "settings": {}
 }

@@ -1,6 +1,6 @@
-import Util from '../../common/Util';
-import Popup from '../popup/Popup';
-import './modal.scss';
+import Util from 'common/Util';
+import Popup from 'components/popup/Popup';
+import 'components/modal/modal.scss';
 
 class Modal extends Popup {
   private content?: HTMLElement;

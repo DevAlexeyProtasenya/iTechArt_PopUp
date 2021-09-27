@@ -1,5 +1,5 @@
-import Toastr from '../components/toastr/Toastr';
-import { FormSettingsType, ToastrType } from './common';
+import Toastr from 'components/toastr/Toastr';
+import { FormSettingsType, ToastrType } from 'common/common';
 
 const toastFormFields: FormSettingsType = {
   handler: (form: HTMLFormElement) => {

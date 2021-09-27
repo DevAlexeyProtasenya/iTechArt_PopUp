@@ -1,4 +1,4 @@
-import Util from '../../common/Util';
+import Util from 'common/Util';
 
 class Popup {
   private element: HTMLElement;
